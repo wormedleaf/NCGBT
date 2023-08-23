@@ -21,7 +21,7 @@ transformers==4.28.1
 ```
 
 ## Quick Start
-
+First please download the processed bug description at: https://pan.baidu.com/s/176RQxXw5zEbqxAY5-TFpdA?pwd=fd7e and unzip it to the root directory
 ```bash
 python main.py --dataset eclipse
 ```
