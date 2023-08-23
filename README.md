@@ -6,7 +6,7 @@ This is the official PyTorch implementation for the NCGBT:
 We propose Neighborhood Contrastive learning based Graph neural network Bug Triaging framework, addressing data sparsity in graph bug Triaging using contrastive learning.
 
 <div  align="center"> 
-<img src="asset/intro.png" style="width: 75%"/>
+<img src="asset/framework.png" style="width: 75%"/>
 </div>
 
 ## Requirements
