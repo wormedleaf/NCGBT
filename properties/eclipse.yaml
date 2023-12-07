@@ -12,3 +12,4 @@ ssl_reg: 1e-9
 alpha: 1
 proto_reg: 1e-10
 num_clusters: 100
+batch_size: 39
