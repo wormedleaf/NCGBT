@@ -21,11 +21,9 @@ transformers==4.28.1
 ```
 
 ## Quick Start
-First please download the processed bug description at: https://pan.baidu.com/s/176RQxXw5zEbqxAY5-TFpdA?pwd=fd7e and unzip it to the root directory
-```bash
-python main.py --dataset eclipse
-```
-
-You can replace `eclipse` to `mozilla`, `office` to change the dataset.
+First please download the processed bug description at: https://pan.baidu.com/s/176RQxXw5zEbqxAY5-TFpdA?pwd=fd7e or 
+https://mega.nz/file/oxUF0LxI#D39OZb3wctd1AfMOcG_Pt1KFAn4IzfQfttrJW6dqBNc and unzip it to the root directory
+You can run main.py to run the entire program
+You can replace default dataset in line 117 of main.py (`eclipse` to `mozilla`, `office`) to change the dataset.
 
 
