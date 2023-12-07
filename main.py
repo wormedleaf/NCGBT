@@ -62,7 +62,7 @@ def run_single_model(args, collate_fn):
 
     dataset_Bert = Dataset('train', args.dataset)
     loader = torch.utils.data.DataLoader(dataset=dataset_Bert,
-                                         batch_size=39,
+                                         batch_size=config['batch_size'],
                                          collate_fn=collate_fn,
                                          shuffle=False,
                                          drop_last=False)
@@ -123,11 +123,9 @@ if __name__ == '__main__':
         'properties/overall.yaml',
         'properties/NCGBT.yaml'
     ]
-    if args.dataset in ['eclipse']:
+    if args.dataset in ['eclipse', 'mozilla', 'office']:
         args.config_file_list.append(f'properties/{args.dataset}.yaml')
     if args.config is not '':
         args.config_file_list.append(args.config)
 
     run_single_model(args, collate_fn)
-
-# 'ml-1m', 'yelp', 'amazon-books', 'gowalla-merged', 'alibaba'
