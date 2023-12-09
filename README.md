@@ -40,4 +40,3 @@ You can run `main.py` to run the entire program.
 You can replace default dataset in line 117 of `main.py` (`eclipse` to `mozilla`, `office`) to change the dataset.
 
 You can change `properties/*.yaml` to change the hyperparameters.
->>>>>>> 8a1a1e4860d2af7160e94916debe20d4caa853da
