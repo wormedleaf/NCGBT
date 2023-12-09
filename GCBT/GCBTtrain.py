@@ -1,19 +1,18 @@
 import argparse
+import ssl
 from logging import getLogger
-
 from recbole.config import Config
 from recbole.data import create_dataset, data_preparation
 from recbole.utils import init_logger, init_seed, set_color
 
-from ncgbt import NCGBT, Bert
-from trainer import NCGBTTrainer
+from GCBT import GCBT, Bert
+from trainer import GCBTTrainer
 from utils import *
 import numpy as np
-
-
 from transformers import BertModel
 from datasets import load_dataset
 from transformers import BertTokenizer
+#ssl._create_default_https_context = ssl._create_unverified_context
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 def collate_fn(data):
@@ -43,8 +42,8 @@ def collate_fn(data):
 def run_single_model(args, collate_fn):
     # configurations initialization
     config = Config(
-        model=NCGBT,
-        dataset=args.dataset, 
+        model=GCBT,
+        dataset=args.dataset,
         config_file_list=args.config_file_list
     )
     init_seed(config['seed'], config['reproducibility'])
@@ -62,11 +61,7 @@ def run_single_model(args, collate_fn):
 
     dataset_Bert = Dataset('train', args.dataset)
     loader = torch.utils.data.DataLoader(dataset=dataset_Bert,
-<<<<<<< HEAD
-                                         batch_size=39,
-=======
                                          batch_size=config['batch_size'],
->>>>>>> 8a1a1e4860d2af7160e94916debe20d4caa853da
                                          collate_fn=collate_fn,
                                          shuffle=False,
                                          drop_last=False)
@@ -94,46 +89,32 @@ def run_single_model(args, collate_fn):
     pad_emb = pad_emb.to(device)
     out_all = torch.cat((pad_emb, out_all), dim=0)
     out_all = out_all.float()
-    # dataset splitting
+
+    logger.info(dataset)
     train_data, valid_data, test_data = data_preparation(config, dataset)
-
-    # model loading and initialization
-    model = NCGBT(config, train_data.dataset, out_all).to(device)
+    model = GCBT(config, train_data.dataset, out_all).to(config['device'])
     logger.info(model)
-
-    # trainer loading and initialization
-    trainer = NCGBTTrainer(config, model)
-
-    # model training
+    trainer = GCBTTrainer(config, model)
     best_valid_score, best_valid_result = trainer.fit(
         train_data, valid_data, saved=True, show_progress=config['show_progress']
     )
-
-    # model evaluation
     test_result = trainer.evaluate(test_data, load_best_model=True, show_progress=config['show_progress'])
-
     logger.info(set_color('best valid ', 'yellow') + f': {best_valid_result}')
     logger.info(set_color('test result', 'yellow') + f': {test_result}')
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-<<<<<<< HEAD
-    parser.add_argument('--dataset', type=str, default='mozilla', help='The datasets can be: mozilla, office, eclipse')
-=======
-    parser.add_argument('--dataset', type=str, default='eclipse', help='The datasets can be: mozilla, office, eclipse')
->>>>>>> 8a1a1e4860d2af7160e94916debe20d4caa853da
+    parser.add_argument('--dataset', type=str, default='eclipse',
+                        help='The datasets can be: chrome, core, firefox')
     parser.add_argument('--config', type=str, default='', help='External config file name.')
     args, _ = parser.parse_known_args()
-
-    # Config files
     args.config_file_list = [
         'properties/overall.yaml',
-        'properties/NCGBT.yaml'
+        'properties/GCBT.yaml',
     ]
     if args.dataset in ['eclipse', 'mozilla', 'office']:
         args.config_file_list.append(f'properties/{args.dataset}.yaml')
-    if args.config is not '':
+    if args.config != '':
         args.config_file_list.append(args.config)
-
     run_single_model(args, collate_fn)

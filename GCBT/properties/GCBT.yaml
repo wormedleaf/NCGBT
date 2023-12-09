@@ -1,0 +1,11 @@
+embedding_size: 1024
+
+n_layers: 1
+
+reg_weight: 1e-4
+
+hyper_layers: 3
+
+m_step: 1
+
+stopping_step: 10

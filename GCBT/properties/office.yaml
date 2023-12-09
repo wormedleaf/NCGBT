@@ -11,9 +11,5 @@ ssl_temp: 0.1
 ssl_reg: 1e-9
 alpha: 1
 proto_reg: 1e-10
-<<<<<<< HEAD
 num_clusters: 100
-=======
-num_clusters: 500
-batch_size: 50
->>>>>>> 8a1a1e4860d2af7160e94916debe20d4caa853da
+batch_size: 54
