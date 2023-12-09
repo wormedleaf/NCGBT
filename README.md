@@ -19,18 +19,6 @@ faiss-gpu==1.7.4
 cudatoolkit==11.8.0
 transformers==4.28.1
 ```
-
-<<<<<<< HEAD
-## Quick Start
-First please download the processed bug description at: https://pan.baidu.com/s/176RQxXw5zEbqxAY5-TFpdA?pwd=fd7e and unzip it to the root directory
-```bash
-python main.py --dataset eclipse
-```
-
-You can replace `eclipse` to `mozilla`, `office` to change the dataset.
-
-
-=======
 ## How to Start
 First please download the processed bug description at: https://pan.baidu.com/s/176RQxXw5zEbqxAY5-TFpdA?pwd=fd7e or 
 https://mega.nz/file/oxUF0LxI#D39OZb3wctd1AfMOcG_Pt1KFAn4IzfQfttrJW6dqBNc and unzip it to the root directory.
