@@ -62,11 +62,8 @@ def run_single_model(args, collate_fn):
 
     dataset_Bert = Dataset('train', args.dataset)
     loader = torch.utils.data.DataLoader(dataset=dataset_Bert,
-<<<<<<< HEAD
                                          batch_size=39,
-=======
                                          batch_size=config['batch_size'],
->>>>>>> 8a1a1e4860d2af7160e94916debe20d4caa853da
                                          collate_fn=collate_fn,
                                          shuffle=False,
                                          drop_last=False)
@@ -118,11 +115,7 @@ def run_single_model(args, collate_fn):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-<<<<<<< HEAD
-    parser.add_argument('--dataset', type=str, default='mozilla', help='The datasets can be: mozilla, office, eclipse')
-=======
     parser.add_argument('--dataset', type=str, default='eclipse', help='The datasets can be: mozilla, office, eclipse')
->>>>>>> 8a1a1e4860d2af7160e94916debe20d4caa853da
     parser.add_argument('--config', type=str, default='', help='External config file name.')
     args, _ = parser.parse_known_args()
 
