@@ -13,8 +13,8 @@ Modified from: https://gitee.com/papercodefromasexd/GCBT.git
 - `trainer.py` is the implementation of a trainer for GCBT training.
 
 ### How to use
-
-1. Run `GCBTtrain.py`.
+1. Please download the processed bug description at: https://pan.baidu.com/s/176RQxXw5zEbqxAY5-TFpdA?pwd=fd7e or https://mega.nz/file/oxUF0LxI#D39OZb3wctd1AfMOcG_Pt1KFAn4IzfQfttrJW6dqBNc and unzip it to the upper root directory.
+2. Run `GCBTtrain.py`.
 You can replace `eclipse` to `mozilla`, `office` in line 108 to change the dataset.
 
 ### Contribution
