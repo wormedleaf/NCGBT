@@ -7,8 +7,8 @@ eval_setting:
 epochs: 300
 train_batch_size: 128
 eval_batch_size: 12800
-valid_metric: Recall@10
-metrics: ["Recall", "Hit"]
+valid_metric: Hit@10
+metrics: ["Hit"]
 topk: [1,2,3,4,5,6,7,8,9,10]
 learner: Adam
 learning_rate: 0.002
